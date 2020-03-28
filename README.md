@@ -13,7 +13,7 @@ Celem projektu jest projekt i implementacja translatora plików w formacie CSV n
 # Narzędzia planowane do użycia
 
 ANTLR (ANother Tool for Language Recognition) - to generator analizatora składni, który używa algorytmu LL (*)
-do parsowanie języków. 
+do parsowania języków. 
 
 # Gramatyka dla plików w formacie CSV 
 Tutaj będzie gramatyka dla plików CSV..
