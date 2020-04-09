@@ -13,6 +13,15 @@ public class CsvToHtmlTable extends CSV_GrammarBaseListener {
     }
 
     @Override
+    public void enterHeader_row(CSV_GrammarParser.Header_rowContext ctx) {
+        System.out.println("<tr>");
+    }
+
+    @Override public void exitHeader_row(CSV_GrammarParser.Header_rowContext ctx) {
+        System.out.println("</tr>");
+    }
+
+    @Override
     public void enterRow(CSV_GrammarParser.RowContext ctx){
         System.out.println("<tr>");
     }
@@ -20,6 +29,20 @@ public class CsvToHtmlTable extends CSV_GrammarBaseListener {
     @Override
     public void exitRow(CSV_GrammarParser.RowContext ctx){
         System.out.println("</tr>");
+    }
+
+
+    @Override public void enterCell_header(CSV_GrammarParser.Cell_headerContext ctx) {
+        System.out.printf("<th>");
+        if(ctx.CHARS().getText() != null){
+            System.out.printf(ctx.CHARS().getText());
+        } else{
+            System.out.printf("");
+        }
+    }
+
+    @Override public void exitCell_header(CSV_GrammarParser.Cell_headerContext ctx) {
+        System.out.println("</th>");
     }
 
     @Override
@@ -30,7 +53,6 @@ public class CsvToHtmlTable extends CSV_GrammarBaseListener {
         } else{
             System.out.printf("");
         }
-
     }
 
     @Override

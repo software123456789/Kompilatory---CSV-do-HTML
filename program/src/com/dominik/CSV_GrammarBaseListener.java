@@ -1,6 +1,5 @@
 // Generated from CSV_Grammar.g4 by ANTLR 4.8
 package com.dominik;
-
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -28,13 +27,13 @@ public class CSV_GrammarBaseListener implements CSV_GrammarListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterHeader(CSV_GrammarParser.HeaderContext ctx) { }
+	@Override public void enterHeader_row(CSV_GrammarParser.Header_rowContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitHeader(CSV_GrammarParser.HeaderContext ctx) { }
+	@Override public void exitHeader_row(CSV_GrammarParser.Header_rowContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -47,6 +46,18 @@ public class CSV_GrammarBaseListener implements CSV_GrammarListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitRow(CSV_GrammarParser.RowContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterCell_header(CSV_GrammarParser.Cell_headerContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitCell_header(CSV_GrammarParser.Cell_headerContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
