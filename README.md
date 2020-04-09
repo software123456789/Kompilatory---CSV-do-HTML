@@ -7,7 +7,12 @@
   + [Literatura](#literatura)
   + [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
 - [Realizacja projektu](#realizacja-projektu)
-  + [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
+   * [Część 1 gramatyka](#część-1-gramatyka)
+     + [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
+   * [Część 2 lexer i parser](#część-2-lexer-i-parser)
+     + [Generacja lexera i parsera](#generacja-lexera-i-parsera)
+     + [Testy działania lexera](#testy-działania-lexera)
+     + [Testy działania parsera](#testy-działania-parsera)
 
 # Opis projektu
 Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. Translator został wykonany zgodnie z architekturą współczesnych interpreterów i translatorów - składa się z lexera i parsera. W wyniku działania lexera i parsera otrzymywane jest drzewo syntaktyczne. Przechodzenie po drzewie pozwala na wykonywanie działań zgodnie z regułami translacji. 
@@ -54,9 +59,10 @@ antlr4
 
 # Realizacja projektu
 
-## Gramatyka dla plików w formacie CSV 
+## Część 1 gramatyka
 Pierwszym krokiem jest określenie postaci języka wejściowego dla narzędzia ANTLR. W projekcie definiujemy język dla plików CSV przy użyciu gramatyki w formacie określanym przez ANTLR. Gramatyka jest zapisana w pliku z rozszerzeniem .g4.
 
+## Gramatyka dla plików w formacie CSV 
 (Zawartość pliku CSV_Grammar.g4):
 
 ```console
@@ -72,8 +78,11 @@ cell: CHARS | ;			   // komorka to ciag znakow, ale moze byc tez pusta
 
 CHARS: ~[,\n]+ ; 		   // cokolwiek co nie jest przecinkiem i nowa linia 
 ```
-## Generacja lexera i parsera
-Kolejnym krokiem jest wygenerowanie lexera oraz parsera na podstawie pliku z gramatyką. Możemy to zrobić z linii komend:
+## Część 2 lexer i parser
+Kolejnym krokiem jest wygenerowanie lexera oraz parsera na podstawie pliku z gramatyką.
+
+### Generacja lexera i parsera
+Możemy to zrobić z linii komend:
 ```console
 antlr4 CSV_Grammar.g4
 ```
@@ -82,4 +91,6 @@ W efekcie generowane jest kilka plików, najważniejsze to:
 + CSV_GrammarParser.java - zawiera implementację parsera dla gramatyki, plik ten zawiera reguły, które przekształcają tokeny wejściwe w drzewo syntaktyczne zgodnie z produkcjami zapisanymi w gramatyce (produkcje to reguły zaczynające się od małych liter) 
 +  CSV_GrammarListener, CSVGrammarBaseListener - to interfejs i klasa, które umożliwiają przechodzenie po drzewie syntaktycznym poprzez mechanizm listenerów (analogia do reagowania na akcje użytkownika w GUI)
 
+### Testy działania lexera
 
+### Testy działania parsera
