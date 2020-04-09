@@ -4,6 +4,8 @@
 # Spis treści
 - [Opis projektu](#opis-projektu)
 - [Narzędzia](#narzędzia)
+- [Literatura](#literatura)
+- [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
 - [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
 
 # Opis projektu
@@ -15,7 +17,12 @@ Celem projektu jest projekt i implementacja translatora plików w formacie CSV n
 ANTLR (ANother Tool for Language Recognition) - to generator analizatora składni, który używa algorytmu LL (*)
 do parsowania języków. https://www.antlr.org/
 
-## Instrukcja instalacji ANTLR dla Windows
+# Literatura
++ The Definitive ANTLR 4 Reference by Terence Parr
+
+https://pragprog.com/book/tpantlr2/the-definitive-antlr-4-reference
+
+# Instrukcja instalacji ANTLR dla Windows
  1. Pobieramy plik .jar ze strony https://www.antlr.org/download/ - aktualnie najnowsza wersja to antlr-4.8-complete.jar
  2. Pobrany plik umieszczamy w dowolnym katalogu
  3. Klasy z pobranego pliku należy dodać do zmiennej CLASSPATH, tymczasowe dodanie do zmiennej CLASSPATH można zrealizować z linii komend:
@@ -45,4 +52,18 @@ antlr4
 ```
 
 # Gramatyka dla plików w formacie CSV 
-Tutaj będzie gramatyka dla plików CSV..
+(Zawartość pliku csv_grammar.g4)
+
+```console
+grammar CSV
+
+csv_file : header row+;		   // plik csv to naglowek i przynajmniej jeden wiersz
+	
+header: row;			   // naglowek to pojedynczy wiersz
+
+row: cell (',' cell)* '\n';	   // wiersz to jedna lub wiecej komorek oddzielone przecinkami az do nowej linii
+
+cell: CHARS | ;			   // komorka to ciag znakow, ale moze byc tez pusta
+
+CHARS: ~[,\n]+ ; 		   // cokolwiek co nie jest przecinkiem i nowa linia 
+```
