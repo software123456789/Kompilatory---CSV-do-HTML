@@ -236,6 +236,7 @@ Dla pliku wejściowego usernames.csv generowany jest fragment HTML zamieszczony 
 </tr>
 </table>
 ```
+![res](https://user-images.githubusercontent.com/39568472/78917202-dc687780-7a8e-11ea-8567-4adf329741ac.PNG)
 
 ### How to run
 
