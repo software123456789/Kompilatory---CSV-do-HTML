@@ -8,6 +8,7 @@
   + [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
 - [Realizacja projektu](#realizacja-projektu)
    * [Część 1 gramatyka](#część-1-gramatyka)
+     + [Rozpatrywany format danych](#rozpatrywany-format-danych)
      + [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
    * [Część 2 lexer i parser](#część-2-lexer-i-parser)
      + [Generacja lexera i parsera](#generacja-lexera-i-parsera)
@@ -62,7 +63,31 @@ antlr4
 ## Część 1 gramatyka
 Pierwszym krokiem jest określenie postaci języka wejściowego dla narzędzia ANTLR. W projekcie definiujemy język dla plików CSV przy użyciu gramatyki w formacie określanym przez ANTLR. Gramatyka jest zapisana w pliku z rozszerzeniem .g4.
 
-## Gramatyka dla plików w formacie CSV 
+### Rozpatrywany format danych
+CSV to format przechowywanie danych w plikach tekstowych. Istnieje wiele implementacji standardu CSV. W naszym projekcie zakładamy, że:
++ Rekordy oddzielane są znakiem nowej linii (również ostatni wiersz musi zawierać znak nowej linii)
++ Pola oddzielane są przecinkiem
++ Pole może zawierać dowolny ciąg znaków lub być puste
++ Pierwszy wiersz pliku to nagłówek zawierający opisy kolumn
+
+Przykład danych zgodnych z powyższym opisem (plik usernames.csv): 
+
+*Username,Identifier,First name,Last name*
+
+*booker12,9012,Rachel,Booker*
+
+*grey07,2070,Laura,Grey*
+
+*johnson81,4081,Craig,Johnson*
+
+*jenkins46,9346,Mary,Jenkins*
+
+*smith79,5079,Jamie,Smith*
+
+
+
+
+### Gramatyka dla plików w formacie CSV 
 (Zawartość pliku CSV_Grammar.g4):
 
 ```console
