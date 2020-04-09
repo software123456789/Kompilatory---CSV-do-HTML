@@ -17,6 +17,7 @@
    * [Część 3 konwersja csv do html](#część-3-konwersja-csv-do-html)
      + [Docelowy format tabeli HTML](#docelowy-format-tabeli-html)
      + [Opis programu](#opis-programu)
+     + [Testowe wykonanie programu](#testowe-wykonanie-programu)
      + [How to run](#how-to-run)
 
 # Opis projektu
@@ -167,6 +168,73 @@ Wykonanie tego polecenia powoduje generacje lexera, parsera oraz klas i interfej
 ```java	
 	ParseTreeWalker parseTreeWalker = new ParseTreeWalker();
 	parseTreeWalker.walk(new CsvToHtmlTable(), parseTree);
+```
+
+Przechodzenie po drzewie syntaktycznym jest realizowane przez klasę ParseTreeWalker. Jest to klasa z biblioteki antlr, jako parametr przyjmuje ona obiekt klasy CsvToHtmlTable. CsvToHtmlTable to utworzona w projekcie klasa, która dziedziczy po wygenerowanej przez antlr4 klasie CSV_GrammarBaseListener i nadpisuje niektóre z jej metod. 
+
+Sposób przechodzenia po drzewie opiera się o mechanizm 'listenerów'. Listenery reagują na wydarzenia związane z przechodzeniem po drzewie syntaktycznym. Podstawowe wydarzenia to wejście do danego typu węzła i wyjście z daneg typu węzła.
+
+Przykłady zaimplementowanych listenerów:
+```java
+@Override
+    public void enterCsv_file(CSV_GrammarParser.Csv_fileContext ctx){
+        System.out.println("<table>");
+    }
+```
+
+```java
+    @Override
+    public void enterCell(CSV_GrammarParser.CellContext ctx) {
+        System.out.printf("<td>");
+        if(ctx.CHARS().getText() != null){
+            System.out.printf(ctx.CHARS().getText());
+        } else{
+            System.out.printf("");
+        }
+    }
+```
+
+### Testowe wykonanie programu
+Dla pliku wejściowego usernames.csv generowany jest kod HTML zamieszczony poniżej:
+```html
+<table>
+<tr>
+<th>Username</th>
+<th>Identifier</th>
+<th>First name</th>
+<th>Last name</th>
+</tr>
+<tr>
+<td>booker12</td>
+<td>9012</td>
+<td>Rachel</td>
+<td>Booker</td>
+</tr>
+<tr>
+<td>grey07</td>
+<td>2070</td>
+<td>Laura</td>
+<td>Grey</td>
+</tr>
+<tr>
+<td>johnson81</td>
+<td>4081</td>
+<td>Craig</td>
+<td>Johnson</td>
+</tr>
+<tr>
+<td>jenkins46</td>
+<td>9346</td>
+<td>Mary</td>
+<td>Jenkins</td>
+</tr>
+<tr>
+<td>smith79</td>
+<td>5079</td>
+<td>Jamie</td>
+<td>Smith</td>
+</tr>
+</table>
 ```
 
 ### How to run
