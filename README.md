@@ -9,7 +9,7 @@
 - [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
 
 # Opis projektu
-Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. 
+Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. Translator został wykonany zgodnie z architekturą współczesnych interpreterów i translatorów - składa się z lexera i parsera. W wyniku działania lexera i parsera otrzymywane jest drzewo syntaktyczne. Przechodzenie po drzewie pozwala na wykonywanie działań zgodnie z regułami translacji. 
 
 
 # Narzędzia 
@@ -52,7 +52,7 @@ antlr4
 ```
 
 # Gramatyka dla plików w formacie CSV 
-(Zawartość pliku csv_grammar.g4)
+(Zawartość pliku CSV_Grammar.g4)
 
 ```console
 grammar CSV
@@ -67,3 +67,4 @@ cell: CHARS | ;			   // komorka to ciag znakow, ale moze byc tez pusta
 
 CHARS: ~[,\n]+ ; 		   // cokolwiek co nie jest przecinkiem i nowa linia 
 ```
+
