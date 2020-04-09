@@ -15,7 +15,9 @@
      + [Testy działania lexera](#testy-działania-lexera)
      + [Testy działania parsera](#testy-działania-parsera)
    * [Część 3 konwersja csv do html](#część-3-konwersja-csv-do-html)
-     + [Format tabeli HTML](#format-tabeli-html)
+     + [Docelowy format tabeli HTML](#docelowy-format-tabeli-html)
+     + [Opis programu](#opis-programu)
+     + [How to run](#how-to-run)
 
 # Opis projektu
 Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. Translator został wykonany zgodnie z architekturą współczesnych interpreterów i translatorów - składa się z lexera i parsera. W wyniku działania lexera i parsera otrzymywane jest drzewo syntaktyczne. Przechodzenie po drzewie pozwala na wykonywanie działań zgodnie z regułami translacji. 
@@ -168,4 +170,10 @@ Wykonanie tego polecenia powoduje generacje lexera, parsera oraz klas i interfej
 ```
 
 ### How to run
+
+Aby uruchomić program należy dodać do projektu .jar z biblioteką antlr. 
+
+W IntelliJ IDEA: File -> Project Structure -> Libraries -> Add -> Path to .jar
+
+Następnie można uruchomić metodę main z klasy Main. Na standardowe wyjście wypisywana jest tabela HTML utworzona na podstawie danych z pliku usernames.csv.
 
