@@ -126,4 +126,46 @@ W efekcie generowane jest kilka plików, najważniejsze to:
 
 ## Część 3 konwersja csv do html
 
-### Format tabeli HTML
+### Docelowy format tabeli HTML
+
+### Opis programu
+
+W programie używane są klasy, które zostały wygnerowane przez narzędzie antlr4 z poziomu linii komend:
+```console
+antlr4 CSV_Grammar.g4
+```
+Wykonanie tego polecenia powoduje generacje lexera, parsera oraz klas i interfejsów pozwalających na przechodzenie po drzewie syntaktycznym. 
+
++ Określenie danych wejściowych
+```java
+        CharStream codePointCharStream = null; 
+
+        try {
+            codePointCharStream = CharStreams.fromFileName("usernames.csv"); // plik csv z danymi 
+        } catch (IOException e) {
+            System.out.println("File char stream not found.");
+            e.printStackTrace();
+        }
+```
++ Utworzenie lexera i parsera
+```java
+	CSV_GrammarLexer csv_grammarLexer = new CSV_GrammarLexer(codePointCharStream);
+
+        CommonTokenStream commonTokenStream = new CommonTokenStream(csv_grammarLexer);
+
+        CSV_GrammarParser csv_grammarParser = new CSV_GrammarParser(commonTokenStream);
+```
+
++ Utworzenie drzewa syntaktycznego
+```java
+	ParseTree parseTree = csv_grammarParser.csv_file();
+```
+
++ Przechodzenie po wygenerowanym drzewie
+```java	
+	ParseTreeWalker parseTreeWalker = new ParseTreeWalker();
+	parseTreeWalker.walk(new CsvToHtmlTable(), parseTree);
+```
+
+### How to run
+
