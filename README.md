@@ -195,7 +195,7 @@ Przykłady zaimplementowanych listenerów:
 ```
 
 ### Testowe wykonanie programu
-Dla pliku wejściowego usernames.csv generowany jest kod HTML zamieszczony poniżej:
+Dla pliku wejściowego usernames.csv generowany jest fragment HTML zamieszczony poniżej:
 ```html
 <table>
 <tr>
