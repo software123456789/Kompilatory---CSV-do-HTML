@@ -55,7 +55,8 @@ antlr4
 # Realizacja projektu
 
 ## Gramatyka dla plików w formacie CSV 
-Pierwszym krokiem jest określenie postaci języka wejściowego dla narzędzia ANTLR. W projekcie definiujemy język dla plików CSV przy użyciu gramatyki w formacie określanym przez ANTLR. Gramatyka jest zapisana w plik z rozszerzeniem .g4.
+Pierwszym krokiem jest określenie postaci języka wejściowego dla narzędzia ANTLR. W projekcie definiujemy język dla plików CSV przy użyciu gramatyki w formacie określanym przez ANTLR. Gramatyka jest zapisana w pliku z rozszerzeniem .g4.
+
 (Zawartość pliku CSV_Grammar.g4):
 
 ```console
@@ -71,4 +72,14 @@ cell: CHARS | ;			   // komorka to ciag znakow, ale moze byc tez pusta
 
 CHARS: ~[,\n]+ ; 		   // cokolwiek co nie jest przecinkiem i nowa linia 
 ```
+## Generacja lexera i parsera
+Kolejnym krokiem jest wygenerowanie lexera oraz parsera na podstawie pliku z gramatyką. Możemy to zrobić z linii komend:
+```console
+antlr4 CSV_Grammar.g4
+```
+W efekcie generowane jest kilka plików, najważniejsze to:
++ CSV_GrammarLexer.java - zawiera implementację lexera dla gramatyki, plik ten zawiera reguły, które przekształcają słowa wejściowe na tokeny, tokeny zapisane są w gramatyce jako reguły rozpoczynające się dużymi literami lub jako symbole w apostrofach
++ CSV_GrammarParser.java - zawiera implementację parsera dla gramatyki, plik ten zawiera reguły, które przekształcają tokeny wejściwe w drzewo syntaktyczne zgodnie z produkcjami zapisanymi w gramatyce (produkcje to reguły zaczynające się od małych liter) 
++  CSV_GrammarListener, CSVGrammarBaseListener - to interfejs i klasa, które umożliwiają przechodzenie po drzewie syntaktycznym poprzez mechanizm listenerów (analogia do reagowania na akcje użytkownika w GUI)
+
 
