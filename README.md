@@ -14,6 +14,7 @@
      + [Generacja lexera i parsera](#generacja-lexera-i-parsera)
      + [Testy działania lexera](#testy-działania-lexera)
      + [Testy działania parsera](#testy-działania-parsera)
+   * [Część 3 konwersja csv do html]
 
 # Opis projektu
 Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. Translator został wykonany zgodnie z architekturą współczesnych interpreterów i translatorów - składa się z lexera i parsera. W wyniku działania lexera i parsera otrzymywane jest drzewo syntaktyczne. Przechodzenie po drzewie pozwala na wykonywanie działań zgodnie z regułami translacji. 
@@ -119,3 +120,5 @@ W efekcie generowane jest kilka plików, najważniejsze to:
 ### Testy działania lexera
 
 ### Testy działania parsera
+
+## Część 3 konwersja csv do html
