@@ -3,26 +3,27 @@
 
 # Spis treści
 - [Opis projektu](#opis-projektu)
-- [Narzędzia](#narzędzia)
-- [Literatura](#literatura)
-- [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
-- [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
+  + [Narzędzia](#narzędzia)
+  + [Literatura](#literatura)
+  + [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
+- [Realizacja projektu](#realizacja-projektu)
+  + [Gramatyka dla plików w formacie CSV](#gramatyka-dla-plików-w-formacie-csv)
 
 # Opis projektu
 Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. Translator został wykonany zgodnie z architekturą współczesnych interpreterów i translatorów - składa się z lexera i parsera. W wyniku działania lexera i parsera otrzymywane jest drzewo syntaktyczne. Przechodzenie po drzewie pozwala na wykonywanie działań zgodnie z regułami translacji. 
 
 
-# Narzędzia 
+## Narzędzia 
 
 ANTLR (ANother Tool for Language Recognition) - to generator analizatora składni, który używa algorytmu LL (*)
 do parsowania języków. https://www.antlr.org/
 
-# Literatura
+## Literatura
 + The Definitive ANTLR 4 Reference by Terence Parr
 
 https://pragprog.com/book/tpantlr2/the-definitive-antlr-4-reference
 
-# Instrukcja instalacji ANTLR dla Windows
+## Instrukcja instalacji ANTLR dla Windows
  1. Pobieramy plik .jar ze strony https://www.antlr.org/download/ - aktualnie najnowsza wersja to antlr-4.8-complete.jar
  2. Pobrany plik umieszczamy w dowolnym katalogu
  3. Klasy z pobranego pliku należy dodać do zmiennej CLASSPATH, tymczasowe dodanie do zmiennej CLASSPATH można zrealizować z linii komend:
@@ -51,8 +52,11 @@ TestRig to klasa do testowania wyników wygenerowanych przez klasę Tool, będzi
 antlr4
 ```
 
-# Gramatyka dla plików w formacie CSV 
-(Zawartość pliku CSV_Grammar.g4)
+# Realizacja projektu
+
+## Gramatyka dla plików w formacie CSV 
+Pierwszym krokiem jest określenie postaci języka wejściowego dla narzędzia ANTLR. W projekcie definiujemy język dla plików CSV przy użyciu gramatyki w formacie określanym przez ANTLR. Gramatyka jest zapisana w plik z rozszerzeniem .g4.
+(Zawartość pliku CSV_Grammar.g4):
 
 ```console
 grammar CSV
