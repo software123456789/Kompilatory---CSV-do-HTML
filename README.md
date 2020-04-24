@@ -126,6 +126,24 @@ W efekcie generowane jest kilka plików, najważniejsze to:
 ### Testy działania lexera
 
 ### Testy działania parsera
+ 
+W celu przetestowania działania parsera zostało wygenerowane drzewo syntaktyczne przy użyciu narzędzia antlr4. Na początku należy wygenerować klasy dla gramatyki przy użyciu narzędzia antlr4 z poziomu linii komend:
+```console
+antlr4 CSV_Grammar.g4
+```
+Następnie trzeba skompilować wygenerowane pliki poleceniem:
+```console
+javac *.java
+```
+Na koniec wystarczy wygenerować drzewo poleceniem:
+```console
+java org.antlr.v4.gui.TestRig CSV_Grammar csv_file -tree usernames.csv -gui
+```
+W powyzszym poleceniu flaga -gui jest opcjonalna lecz przydatna, ponieważ wizualizuje nam drzewo. Bez tej flagi drzewo generowane jest w formie tekstu.
+
+Wygenerowane drzewo syntaktyczne dla gramatyki dla przykładowych danych:
+![Drzewo syntaktyczne dla gramatyki](https://i.ibb.co/XXtVx2x/syntactic-tree.png)
+
 
 ## Część 3 konwersja csv do html
 
