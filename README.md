@@ -125,6 +125,38 @@ W efekcie generowane jest kilka plików, najważniejsze to:
 
 ### Testy działania lexera
 
+Aby przetestować działanie lexera można użyć narzędzia dostarczanego przez ANTLR o nazwie TestRig. <br/>
+Przyjmuje ono:
+* nazwę gramatyki - w naszym przypadku CSV_Grammar
+* regułę początkową - csv_file
+* opcję wyniku - w nazszym przypadku '-tokens', ponieważ chcemy zobaczyć wygenerowane tokeny
+* ścieżka do pliku testowego - usernames.csv
+
+Końcowa forma polecenia:
+```console
+java org.antlr.v4.gui.TestRig CSV_Grammar csv_file -tokens usernames.csv
+```
+
+Wygenerowane zostają następujące tokeny (zakończone tokenem symbolizującym koniec pliku):
+![tokens](https://user-images.githubusercontent.com/33720728/80991057-bb9a0480-8e37-11ea-8324-75c4c1f1165d.png)
+
+Przykładowy token:
+![example](https://user-images.githubusercontent.com/33720728/80997491-b04bd680-8e41-11ea-961e-97af34f22a67.png)
+
+1. numer tokenu - indeksacja od 0
+2. numer początkowego i końcowego znaku z którego składa się token zaczynając od początku pliku
+3. text z jakiego się składa
+4. typ tokenu - reguła z gramatyki zaczynająca się z dużej litery lub w symbol w apostrofach <br>
+	W naszej gramrtyce znajdują się trzy typy tokenów:
+	* CHARS - ciąg znaków
+	* ',' - następna kolumna
+	* '\n' - nowa linia
+5. pozycja tokenu - numer wiersza i numer znaku w tym wierszu (licząc od zera, tabulator jako jeden znak)
+
+W naszym testowanym przypadku plik csv został prawidłowo podzielony na tokeny. Pierwsze 7 z nich reprezentuje nazwy pól rekordów oddzielone przecinkami, a po nich znak końca linii. Analogicznie każde kolejne 7 tokenów to kolejny rekord w pliku csv. Na końcu znajduje się token końca pliku. 
+
+
+
 ### Testy działania parsera
  
 W celu przetestowania działania parsera zostało wygenerowane drzewo syntaktyczne przy użyciu narzędzia antlr4. Na początku należy wygenerować klasy dla gramatyki przy użyciu narzędzia antlr4 z poziomu linii komend:
