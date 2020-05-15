@@ -174,7 +174,50 @@ java org.antlr.v4.gui.TestRig CSV_Grammar csv_file -tree usernames.csv -gui
 W powyzszym poleceniu flaga -gui jest opcjonalna lecz przydatna, ponieważ wizualizuje nam drzewo. Bez tej flagi drzewo generowane jest w formie tekstu.
 
 Wygenerowane drzewo syntaktyczne dla gramatyki dla przykładowych danych:
+
 ![Drzewo syntaktyczne dla gramatyki](https://i.ibb.co/XXtVx2x/syntactic-tree.png)
+
+Fragment drzewa syntaktycznego dla gramatyki (nagłówek):
+
+![Fragment drzewa syntaktycznego dla gramatyki](https://i.imgur.com/qZUtRnN.png)
+
+Fragment drzewa syntaktycznego dla gramatyki (przykładowy wiersz inny niż nagłówek):
+
+![Fragment drzewa syntaktycznego dla gramatyki](https://i.imgur.com/kOKa5HY.png)
+
+**Analiza drzewa syntaktycznego**
+
+Będziemy korzystać z metody generacyjnej rozbioru gramatycznego. Poniżej przedstawiony jest rozbiór gramatyczny. Pogrubiony sybol, to ten który będziemy rozkładać przez kolejne podstawienia. Poniżej pokazany jest robiór do momentu, aż otrzymamy nagłówek. Polega to na tym, że startujemy z sybolu **csv_file** gdzie przechodzimy do **(header_row) (row+)** (nawiasy zostały użyte jedynie w celu lepszej wizualizacji tego). Co oznacza, że nasz plik składa się z nagłówka i przynajmniej jednego wiersza z danymi. Później przez kolejne przekształcenia rozbijamy **header_row** na **cell_header (',' cell_header)\* '\n'** co oznacza, że nagłówek to jedna komórka lub więcej rozdzielonych przecinkami i kończy się znakiem nowej linii. Następnie **cell_header** przechodzi w **CHARS**, a on może składać się ze znaków jakichkolwiek co nie jest przecinkiem albo znakiem nowej linni, co mozemy zapisać w postaci **~[,\n]+**.
+
+
+**csv_file** => <br />
+**(header_row)** (row+) => <br />
+**(cell_header)** ((',' cell_header)* '\n') (row+) => <br />
+**(CHARS)** ((',' cell_header)* '\n') (row+) => <br />
+**(~[,\n]+)** ((',' cell_header)* '\n') (row+) => <br />
+Username **((',' cell_header)* '\n')** (row+) => <br />
+Username, **cell_header**, cell_header, cell_header, \n (row+) => <br /> 
+Username, **CHARS**, cell_header, cell_header, \n (row+) => <br />
+Username, **(~[,\n]+)**, cell_header, cell_header, \n (row+) => <br />
+Username, Identifier, **cell_header**, cell_header, \n (row+) => <br />
+...dalej rozkładamy każdy kolejny cell_header... => <br />
+Username, Identifier, First name, Last name \n (row+) <br />
+
+W powyższym przykładzie dochodzimy do momentu, gdzie mamy już nagłówek i zostaje Nam **row+**, co oznacza, że będziemy zajmować się kolejnymi wierszami, których może być jeden lub więcej. Działamy w bardzo analogiczny sposób jak dla nagłówka.
+
+**row+** => <br />
+**row** row row row row row => <br />
+(**cell** (',' cell)* '\n') row row row row row => <br />
+(**CHARS** (',' cell)* '\n') row row row row row => <br />
+(**~[,\n]+** (',' cell)* '\n') row row row row row => <br />
+(booker12, **(',' cell)* '\n'**) row row row row row => <br />
+(booker12, **cell** cell cell) row row row row row => <br />
+(booker12, **CHARS** cell cell) row row row row row => <br />
+(booker12, **~[,\n]+** cell cell) row row row row row => <br />
+(booker12, 9012 **cell** cell) row row row row row => <br />
+...robimy podstawienia w Naszej gramatyce za kolejne symbole... => <br />
+booker12, 9012, Rachel, Booker \n **row** row row row row => <br />
+...później zajmujemy się podstawianiem za kolejny rekord, bo w podstawianiu zaczynamy od najardziej wysuniętego sybolu na lewo... <br />
 
 
 ## Część 3 konwersja csv do html
