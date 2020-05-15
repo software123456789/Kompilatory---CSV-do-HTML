@@ -224,7 +224,7 @@ booker12, 9012, Rachel, Booker \n **row** row row row row => <br />
 
 ### Docelowy format tabeli HTML
 
-W docelowej tabeli HTML wszystkie rzędy będą definiowane za pomocą znaczników <tr>. W pierwszym z nich zagnieżdżone zostaną pogrubione i wyśrodkowane nagłówki kolumn przy użyciu <th>, natomiast w pozostałych wierszach będą znajdować się dane zdefiniowane przez znaczniki <td>.
+W docelowej tabeli HTML wszystkie rzędy będą definiowane za pomocą znaczników \<tr\>. W pierwszym z nich zagnieżdżone zostaną pogrubione i wyśrodkowane nagłówki kolumn przy użyciu \<th\>, natomiast w pozostałych wierszach będą znajdować się dane zdefiniowane przez znaczniki \<td\>.
 
 ### Opis programu
 
