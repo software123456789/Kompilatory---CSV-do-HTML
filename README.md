@@ -224,11 +224,7 @@ booker12, 9012, Rachel, Booker \n **row** row row row row => <br />
 
 ### Docelowy format tabeli HTML
 
-Docelowa tabela HTML składa się z czterech kolumn:
-+ Username - nazwa użytkownika (String, który może zawierać litery oraz cyfry)
-+ Identifier - unikalne ID (Integer składający się z czterech znaków)
-+ First Name - imię (String)
-+ Second Name - nazwisko (String)
+W docelowej tabeli HTML wszystkie rzędy będą definiowane za pomocą znaczników <tr>. W pierwszym z nich zagnieżdżone zostaną pogrubione i wyśrodkowane nagłówki kolumn przy użyciu <th>, natomiast w pozostałych wierszach będą znajdować się dane zdefiniowane przez znaczniki <td>.
 
 ### Opis programu
 
@@ -335,6 +331,12 @@ Dla pliku wejściowego usernames.csv generowany jest fragment HTML zamieszczony 
 </tr>
 </table>
 ```
+Tabela wynikowa składa się z czterech kolumn:
++ Username - nazwa użytkownika (String, który może zawierać litery oraz cyfry)
++ Identifier - unikalne ID (Integer składający się z czterech znaków)
++ First Name - imię (String)
++ Second Name - nazwisko (String)
+
 ![res](https://user-images.githubusercontent.com/39568472/78917202-dc687780-7a8e-11ea-8567-4adf329741ac.PNG)
 
 ### How to run
