@@ -224,6 +224,12 @@ booker12, 9012, Rachel, Booker \n **row** row row row row => <br />
 
 ### Docelowy format tabeli HTML
 
+Tabela HTML składa się z czterech kolumn:
++ Username - nazwa użytkownika (String)
++ Identifier - unikalne ID (Integer składający się z czterech znaków)
++ First Name - imię (String)
++ Second Name - nazwisko (String)
+
 ### Opis programu
 
 W programie używane są klasy, które zostały wygnerowane przez narzędzie antlr4 z poziomu linii komend:
