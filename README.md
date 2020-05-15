@@ -224,8 +224,8 @@ booker12, 9012, Rachel, Booker \n **row** row row row row => <br />
 
 ### Docelowy format tabeli HTML
 
-Tabela HTML składa się z czterech kolumn:
-+ Username - nazwa użytkownika (String)
+Docelowa tabela HTML składa się z czterech kolumn:
++ Username - nazwa użytkownika (String, który może zawierać litery oraz cyfry)
 + Identifier - unikalne ID (Integer składający się z czterech znaków)
 + First Name - imię (String)
 + Second Name - nazwisko (String)
