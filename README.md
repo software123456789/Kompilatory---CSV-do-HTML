@@ -220,6 +220,11 @@ booker12, 9012, Rachel, Booker \n **row** row row row row => <br />
 ...później zajmujemy się podstawianiem za kolejny rekord, bo w podstawianiu zaczynamy od najardziej wysuniętego sybolu na lewo... <br />
 
 
+**Poniżej przedstawiony jest gif prezentujący tworzenie takiego drzewa dla nagłówka i pierwszego wiersza danych**
+
+![Tworzenie drzewa syntaktycznego](https://im4.ezgif.com/tmp/ezgif-4-9dcf51f9579b.gif)
+
+
 ## Część 3 konwersja csv do html
 
 ### Docelowy format tabeli HTML
