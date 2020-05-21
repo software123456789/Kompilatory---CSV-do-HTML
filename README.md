@@ -6,6 +6,7 @@
   + [Narzędzia](#narzędzia)
   + [Literatura](#literatura)
   + [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
+- [Podział prac i stan projektu](#podział-prac-i-stan-projektu)
 - [Realizacja projektu](#realizacja-projektu)
    * [Część 1 gramatyka](#część-1-gramatyka)
      + [Rozpatrywany format danych](#rozpatrywany-format-danych)
@@ -22,7 +23,6 @@
 
 # Opis projektu
 Celem projektu jest projekt i implementacja translatora plików w formacie CSV na tabele HTML. Translator został wykonany zgodnie z architekturą współczesnych interpreterów i translatorów - składa się z lexera i parsera. W wyniku działania lexera i parsera otrzymywane jest drzewo syntaktyczne. Przechodzenie po drzewie pozwala na wykonywanie działań zgodnie z regułami translacji. 
-
 
 ## Narzędzia 
 
@@ -62,6 +62,15 @@ TestRig to klasa do testowania wyników wygenerowanych przez klasę Tool, będzi
 ```console
 antlr4
 ```
+# Podział prac i stan projektu
+Podział prac:
++ Klaudia Klepacka - zbieranie materiałów źródłowych, prowadzenie dokumentacji, projektowanie formatów danych, projektowanie gramatyki
++ Marcin Michna - instalacja i konfiguracja narzędzi projektowych, praca nad algorytmem konwersji, generacja i ocena działania klas, testowanie działania lexera
++ Dominik Wróbel - praca nad algorytmem konwersji, pisanie programu, zarządzanie projektem, integracja klas projektowych z algorytmem konwersji
++ Jakub Zyngier - projekowanie gramatyki, generacja klas, testowanie działania parsera, prowadzenia dokumentacji, generacja i ocena działania klas
+
+Stan projektu:
+Projekt został zrealizowany w pełni i spełnia wszystkie postawione na początku wymagania. Możliwym rozwinięciem projektu jest zapis wynikowej tabeli do pliku HTML (aktualnie jest ona wypisywana na standardowe wyjście).
 
 # Realizacja projektu
 
