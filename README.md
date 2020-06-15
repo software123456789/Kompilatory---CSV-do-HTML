@@ -6,6 +6,7 @@
   + [Narzędzia](#narzędzia)
   + [Literatura](#literatura)
   + [Instrukcja instalacji ANTLR dla Windows](#instrukcja-instalacji-antlr-dla-windows)
+- [Teoria](#teoria)
 - [Podział prac i stan projektu](#podział-prac-i-stan-projektu)
 - [Realizacja projektu](#realizacja-projektu)
    * [Część 1 gramatyka](#część-1-gramatyka)
@@ -62,6 +63,12 @@ TestRig to klasa do testowania wyników wygenerowanych przez klasę Tool, będzi
 ```console
 antlr4
 ```
+# Teoria 
+Parser LL(\*) to lewostronny parser z podglądem dowolnej liczby symboli.
+Celem statycznej analizy gramatycznej LL jest obliczenie wyrażeń wyprzedzających, które przewidują alternatywne produkcje w dowolnym punkcie decyzji gramatycznej. Kluczową ideą parserów LL(*) jest użycie wyrażeń regularnych.  LL(*) rozróżnia alternatywne produkcje za pomocą potencjalnie cyklicznego DFA, w którym każdy stan zatrzymania jednoznacznie przewiduje alternatywę. 
+Algorytm LL(\*) daje dokładny DFA, gdy „język z wyprzedzeniem” jest regularny (język z wyprzedzeniem jest regularny, gdy nie ma rekurencji w gramatyce). 
+Gdy algorytm konstrukcji DFA napotyka rekurencyjne wywołania reguł w gramatyce, aproksymuje rekurencję z cyklami w DFA.
+
 # Podział prac i stan projektu
 Podział prac:
 + Klaudia Klepacka - zbieranie materiałów źródłowych, prowadzenie dokumentacji, projektowanie formatów danych, projektowanie gramatyki
