@@ -65,7 +65,7 @@ antlr4
 ```
 # Teoria 
 Parser LL(\*) to lewostronny parser z podglądem dowolnej liczby symboli.
-Celem statycznej analizy gramatycznej LL jest obliczenie wyrażeń wyprzedzających, które przewidują alternatywne produkcje w dowolnym punkcie decyzji gramatycznej. Kluczową ideą parserów LL(*) jest użycie wyrażeń regularnych.  LL(*) rozróżnia alternatywne produkcje za pomocą potencjalnie cyklicznego DFA, w którym każdy stan zatrzymania jednoznacznie przewiduje alternatywę. 
+Celem statycznej analizy gramatycznej LL jest obliczenie wyrażeń wyprzedzających, które przewidują alternatywne produkcje w dowolnym punkcie decyzji gramatycznej. Kluczową ideą parserów LL(\*) jest użycie wyrażeń regularnych.  LL(\*) rozróżnia alternatywne produkcje za pomocą potencjalnie cyklicznego DFA, w którym każdy stan zatrzymania jednoznacznie przewiduje alternatywę. 
 Algorytm LL(\*) daje dokładny DFA, gdy „język z wyprzedzeniem” jest regularny (język z wyprzedzeniem jest regularny, gdy nie ma rekurencji w gramatyce). 
 Gdy algorytm konstrukcji DFA napotyka rekurencyjne wywołania reguł w gramatyce, aproksymuje rekurencję z cyklami w DFA.
 
